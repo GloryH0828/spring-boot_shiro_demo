@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.thymeleaf.org/thymeleaf-extras-shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="shorcut icon" href="#"/>
+</head>
+<body>
+<h1>这里是 index 页面</h1><br/>
+<div th:if="${session.account != null}">
+    <span th:text="${session.account.username}+',欢迎回来！'"></span>
+    <a href="/logout">退出登录</a>
+</div>
+<a href="/main">点击跳转main页面</a><br/>
+<div shiro:hasPermission="manage">
+    <a href="/manage">点击跳转manage页面</a><br/>
+</div>
+<div shiro:hasRole="administrator">
+    <a href="/administrator">点击跳转administrator页面</a>
+</div>
+</body>
+</html>
